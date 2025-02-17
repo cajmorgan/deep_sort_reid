@@ -13,7 +13,7 @@ def parse_requirements(filename):
 
 setup(
     name="deep_sort_reid",  # Your project name
-    version="0.1.6",  # Your project version
+    version="0.1.7",  # Your project version
     description="A re-mastered version of the original Deep Sort implementation, with added functionalities such as re-identification.",
     long_description=long_description,
     long_description_content_type="text/markdown",  # If you have README.md
