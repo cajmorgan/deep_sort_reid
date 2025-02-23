@@ -7,7 +7,7 @@ import torch
 from deep_sort_reid.constants.tracker import GATING_THRESHOLD
 from deep_sort_reid.storage.CacheStorage import CacheStorage
 from deep_sort_reid.models.motion.KalmanFilter import KalmanFilter
-from deep_sort_reid.tracker.Track import Track
+from deep_sort_reid.trackers.deep_sort.Track import Track
 from deep_sort_reid.types.coords import CoordinatesXYAH
 from deep_sort_reid.types.detection import Detection
 from deep_sort_reid.types.metric import MetricType
@@ -38,14 +38,13 @@ class GatedMetric(Metric):
         features = []
         measurements: List[Tensor] = []
         for detection in detections:
-            # If features are disabled
-            # Might have to replace this with torch.zeros and use
-            # features dim from somewhere
             measurements.append(from_xyah_to_tensor(
                 from_xyxy_to_xyah(detection.coords)))
             if detection.feature is None:
-                features.append([])
-                continue
+                # If features are missing from detection,
+                # we simply return it as inf
+                cost_matrix += torch.inf
+                return cost_matrix
 
             features.append(detection.feature)
 

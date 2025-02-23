@@ -35,12 +35,12 @@ To start, use:
 pip install deep_sort_reid
 ```
 
-In the [example.py](./example.py) file, you can find a general flow that uses YOLO for object detection, and then a metric learning model as a feature extractor on the detected objects. Those are then passed into the DeepSortReid class, and for the given results, we plot them on the video with cv2. 
+In the [example.py](./example.py) file, you can find a general flow that uses YOLO for object detection, and then a metric learning model as a feature extractor on the detected objects. Those are then passed into the DeepSortTracker class, and for the given results, we plot them on the video with cv2. 
 
 Given detections and features, we can simply call the library as:
 
 ```python
-from deep_sort_reid.DeepSortReid import DeepSortReid
+from deep_sort_reid.DeepSortTracker import DeepSortTracker
 from deep_sort_reid.types.tracker import TrackResult
 from deep_sort_reid.types.detection import Detection
 from typing import List
@@ -49,7 +49,7 @@ from typing import List
 # Here we assume that features as Torch tensors are added to every detection
 detections: List[List[Detection]] = [...]
 
-deep_sort_reid = DeepSortReid(metric_type="cosine")
+deep_sort_reid = DeepSortTracker(metric_type="cosine")
 track_results: List[List[TrackResult]] = deep_sort_reid.track(detections)
 ```
 

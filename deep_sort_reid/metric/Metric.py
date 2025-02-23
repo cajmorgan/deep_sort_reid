@@ -2,7 +2,7 @@ from typing import List, Sequence
 
 from torch import Tensor
 import torch
-from deep_sort_reid.tracker.Track import Track
+from deep_sort_reid.trackers.deep_sort.Track import Track
 from deep_sort_reid.types.detection import Detection
 from deep_sort_reid.types.metric import MetricType
 from abc import ABC, abstractmethod

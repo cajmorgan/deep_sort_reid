@@ -3,7 +3,7 @@
 from typing import List, Sequence, Tuple
 from deep_sort_reid.metric.IouMetric import IouMetric
 from deep_sort_reid.metric.GatedMetric import GatedMetric
-from deep_sort_reid.tracker.Track import Track
+from deep_sort_reid.trackers.deep_sort.Track import Track
 from deep_sort_reid.types.detection import Detection
 from scipy.optimize import linear_sum_assignment
 

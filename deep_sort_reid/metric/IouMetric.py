@@ -4,7 +4,7 @@ from typing import List
 
 from torch import Tensor
 import torch
-from deep_sort_reid.tracker.Track import Track
+from deep_sort_reid.trackers.deep_sort.Track import Track
 from deep_sort_reid.types.coords import CoordinatesXYXY
 from deep_sort_reid.types.detection import Detection
 from deep_sort_reid.types.metric import MetricType
@@ -25,9 +25,9 @@ class IouMetric(Metric):
         cost_matrix = torch.zeros((len(tracks)), len(detections))
 
         for idx, track in enumerate(tracks):
-            if track.time_since_update > 5:
-                cost_matrix[idx, :] = torch.inf
-                continue
+            # if track.time_since_update > 5:
+            #     cost_matrix[idx, :] = torch.inf
+            #     continue
 
             track_state_coords: CoordinatesXYXY = track.get_position()
 
